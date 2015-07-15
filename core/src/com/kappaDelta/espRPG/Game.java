@@ -10,10 +10,13 @@ public class Game extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
 	
+        Player pco;
+        
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
+                pco = new Player();
 	}
 
 	@Override

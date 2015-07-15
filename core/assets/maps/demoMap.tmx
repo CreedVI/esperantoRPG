@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="32" tileheight="32" nextobjectid="15">
+ <tileset firstgid="1" name="image" tilewidth="32" tileheight="32">
+  <image source="tiles/image.png" width="512" height="512"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt1sENgCAMheFuyDzqBOoE6iK4AWxlD030QAJJaV4wPfwXo3wBiRKIKBgVudtw/FqJy0A/g330/Fv8SO8+KRUVtfjpc1+ppEi7/7Xvb3Qf/Tx6/u6P79ey9Fu+UZa+NvT5Ae2j1999993/jz9xs7QA/JXbpF2uac/vWr/2f+zpH9wpXR3H1fQAhqaEzQ==
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztlEEOQEAQBPfT/ICf4QV4AV5gXdXZYSMRPSRdSZ3r0jMpGWOMMcaYO3TY4xDUH3HCOai/4IpbUH/HjEdQ/wmK7ZQaiu2UGortlBqK7fx5n29SYS3sXe+gwVbY//qfPgHX8ii1
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1">
+  <object id="9" type="Tree" x="705" y="734" width="94" height="131"/>
+  <object id="10" type="Tree" x="929" y="702" width="94" height="131"/>
+  <object id="11" type="Tree" x="448" y="577" width="95" height="127"/>
+  <object id="12" type="Tree" x="768" y="927" width="93" height="108"/>
+  <object id="13" type="Fire" x="896" y="897" width="66" height="63"/>
+ </objectgroup>
+</map>
