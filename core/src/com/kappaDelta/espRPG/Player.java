@@ -11,8 +11,8 @@ public class Player {
     char facing = 's'; //Where n = north, e = east,w = west, s = south
     
     int speed = 2; //How fast the player moves
-    int pcoWidth = 32; //Player Controled Object (PCO) is 32 pixels tall 
-    int pcoHeight = 32; //Player Controled Object (PCO) is 32 pixels wide
+    int pcoWidth = 32; //Player Controlled Object (PCO) is 32 pixels tall 
+    int pcoHeight = 32; //Player Controlled Object (PCO) is 32 pixels wide
     
     void controlls(){
         
