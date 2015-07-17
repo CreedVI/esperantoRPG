@@ -1,59 +1,41 @@
 package com.kappaDelta.espRPG;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-
 public class Player {
     
+	// Can the player move (N, E, S, W)?
     boolean canMove = true, canMoveN = true, canMoveE = true, canMoveS = true, canMoveW = true;
     
-    boolean N = false, E = false, S = false, W = false; //Compass directions North, East, South, West
-    char facing = 's'; //Where n = north, e = east,w = west, s = south
+    // In which direction is the player facing (N, E, S, W)?
+    // N as default value
+    char facing = 'N';
     
-    int speed = 2; //How fast the player moves
-    int pcoWidth = 32; //Player Controlled Object (PCO) is 32 pixels tall 
-    int pcoHeight = 32; //Player Controlled Object (PCO) is 32 pixels wide
+    int speed = 2; // Player speed in tiles per second
+    int pcoWidth = 32; // Player Controlled Object (PCO) is 32 pixels tall 
+    int pcoHeight = 32; // Player Controlled Object (PCO) is 32 pixels wide
     
-    void controlls(){
-        
-        if(canMove){
-
-            if ((Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.UP)) && canMoveN) {
-                N = true;
-                facing = 'n';
-                System.out.println("Up");
-            } else if ((Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN)) && canMoveS) {
-                S = true;
-                facing = 's';
-                System.out.println("Down");
-            } else if ((Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT)) && canMoveW) {
-                W = true;
-                facing = 'w';
-                System.out.println("Left");
-            } else if ((Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.RIGHT)) && canMoveE) {
-                E = true;
-                facing = 'e';
-                System.out.println("Right");
-            }
-        }
-        
+    public void setFacing(char direction) {
+    	facing = direction;
     }
     
-    void move(){
-        if(canMove){
-            if(N){
-                
-            }
-            
-            else if(S){
-                
-            }
-            else if(E){
-                
-            }
-            else if(W){
-                
-            }
-        }
+    public char getFacing() {
+    	return facing;
+    }
+    
+    public boolean canMove(char direction) {
+    	boolean status = false;
+    	
+    	switch (direction) {
+    	case 'N' : status = canMoveN; break;
+    	case 'E' : status = canMoveE; break;
+    	case 'S' : status = canMoveS; break;
+    	case 'W' : status = canMoveW; break;
+    	case 'X' : status = canMove; break; // 'X' stands for general canMove
+    	}
+    	
+    	return status;
+    }
+    
+    public boolean canMove() {
+    	return canMove('X'); // Return the general canMove if no direction is given
     }
 }

@@ -15,9 +15,9 @@ public class Renderer {
     Camera c;
     KeyListener kl;
     
-	public Renderer() {
-		c = new Camera();
-		kl = new KeyListener();
+	public Renderer(Camera c, KeyListener kl) {
+		this.c = c;
+		this.kl = kl;
 		
         tiledMap = new TmxMapLoader().load("maps/demoMap.tmx");
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
