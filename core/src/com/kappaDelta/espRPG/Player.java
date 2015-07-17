@@ -44,7 +44,6 @@ public class Player {
             if(N){
                 
             }
-            
             else if(S){
                 
             }
