@@ -4,6 +4,7 @@ public class Player {
 
     // Can the player move (N, E, S, W)?
     boolean canMove = true, canMoveN = true, canMoveE = true, canMoveS = true, canMoveW = true;
+    static boolean N = false, E = false, S = false, W = false;
 
     // In which direction is the player facing (N, E, S, W)?
     // S as default value so char sprite is facing the camera.
@@ -48,39 +49,37 @@ public class Player {
     public boolean canMove() {
         return canMove('X'); // Return the general canMove if no direction is given
     }
-    
-    public static void movementAnimations(char keyPressed){
-        if(Assets.timer<4){
+
+    public static void movementAnimations() {
+        if (Assets.timer < 4) {
             Assets.timer += 0.1f;
-        }
-        else{
+        } else {
             Assets.timer = 0;
         }
-        switch(keyPressed){
-            case 'W':
-                //General animation structure
-                //Subject to change depending on spritesheet
-                /*if(Assets.timer > 0 && Assets.timer < 1){
-                    System.out.println();
-                }
-                else if(Assets.timer > 1 && Assets.timer < 2){
-                    System.out.println();
-                }
-                else if(Assets.timer > 2 && Assets.timer < 3){
-                    System.out.println();
-                }
-                else if(Assets.timer > 3 && Assets.timer < 4){
-                    System.out.println();
-                }*/
-                break;
-            case 'A':
-                break;
-            case 'S':
-                break;
-            case 'D':
-                break;
-            default:
-                break;
+        if (N) {
+            //General animation structure
+            //Subject to change depending on spritesheet
+            /*if(Assets.timer > 0 && Assets.timer < 1){
+                System.out.println();
+             }
+             else if(Assets.timer > 1 && Assets.timer < 2){
+                System.out.println();
+             }
+             else if(Assets.timer > 2 && Assets.timer < 3){
+                System.out.println();
+             }
+             else if(Assets.timer > 3 && Assets.timer < 4){
+                System.out.println();
+             }*/
+        }
+        else if(E){
+            
+        }
+        else if(S){
+            
+        }
+        else if(W){
+            
         }
     }
 }
