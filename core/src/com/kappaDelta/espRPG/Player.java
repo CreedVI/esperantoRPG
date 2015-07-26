@@ -57,6 +57,7 @@ public class Player {
             Assets.timer = 0;
         }
         if (N) {
+            Assets.mainCharSprite = Assets.mainCharDown_Still;
             //General animation structure
             //Subject to change depending on spritesheet
             /*if(Assets.timer > 0 && Assets.timer < 1){
@@ -73,13 +74,13 @@ public class Player {
              }*/
         }
         else if(E){
-            
+            Assets.mainCharSprite = Assets.mainCharDown_Still;
         }
         else if(S){
-            
+            Assets.mainCharSprite = Assets.mainCharDown_Still;
         }
         else if(W){
-            
+            Assets.mainCharSprite = Assets.mainCharDown_Still;
         }
     }
 }

@@ -11,6 +11,7 @@ public class Game extends ApplicationAdapter {
 
     @Override
     public void create() {
+        Assets.load();
         c = new Camera();
         kl = new KeyListener();
         r = new Renderer(c, kl);
