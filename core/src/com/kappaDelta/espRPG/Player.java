@@ -1,5 +1,7 @@
 package com.kappaDelta.espRPG;
 
+import com.kappaDelta.espRPG.Assets.*;
+
 public class Player {
 
     // Can the player move (N, E, S, W)?
@@ -50,8 +52,9 @@ public class Player {
         return canMove('X'); // Return the general canMove if no direction is given
     }
 
-    public static void movementAnimations() {
-        if (Assets.timer < 4) {
+    public static void movementAnimations(char keyPressed) {
+        
+        /*if (Assets.timer < 4) {
             Assets.timer += 0.1f;
         } else {
             Assets.timer = 0;
@@ -71,7 +74,7 @@ public class Player {
              }
              else if(Assets.timer > 3 && Assets.timer < 4){
                 System.out.println();
-             }*/
+             }
         }
         else if(E){
             Assets.mainCharSprite = Assets.mainCharDown_Still;
@@ -81,6 +84,6 @@ public class Player {
         }
         else if(W){
             Assets.mainCharSprite = Assets.mainCharDown_Still;
-        }
+        }*/
     }
 }

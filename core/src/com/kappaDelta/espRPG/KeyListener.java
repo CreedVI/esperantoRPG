@@ -13,23 +13,27 @@ public class KeyListener implements InputProcessor {
 
     public boolean handleMovementKeys(OrthographicCamera camera) {
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)) {
-            Player.movementAnimations();
+            Renderer.drawMainChar('a');
             camera.translate(-2, 0);
+            return true;
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D)) {
-            Player.movementAnimations();
+            Renderer.drawMainChar('d');
             camera.translate(2, 0);
+            return true;
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W)) {
-            Player.movementAnimations();
+            Renderer.drawMainChar('w');
             camera.translate(0, 2);
+            return true;
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S)) {
-            Player.movementAnimations();
+            Renderer.drawMainChar('s');
             camera.translate(0, -2);
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     @Override
