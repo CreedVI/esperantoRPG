@@ -14,22 +14,25 @@ public class KeyListener implements InputProcessor {
     public boolean handleMovementKeys(OrthographicCamera camera) {
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)) {
             Renderer.drawMainChar('a');
-            camera.translate(-2, 0);
+            //camera.translate(-2, 0);
+            Camera.checkBounds('W');
+            
             return true;
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D)) {
             Renderer.drawMainChar('d');
-            camera.translate(2, 0);
+            Camera.checkBounds('E');
+             
             return true;
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W)) {
             Renderer.drawMainChar('w');
-            camera.translate(0, 2);
+            Camera.checkBounds('N');
             return true;
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S)) {
             Renderer.drawMainChar('s');
-            camera.translate(0, -2);
+            Camera.checkBounds('S');
             return true;
         }
 

@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 
@@ -28,10 +29,13 @@ public class Assets {
     
     static TiledMap tiledMap;
     
+    static MapProperties prop;
+    
     static BitmapFont font;
     
     static int w = Gdx.graphics.getWidth();
     static int h = Gdx.graphics.getHeight();
+    static int mapWidth, mapHeight, tilePixelWidth, tilePixelHeight, mapPixelWidth, mapPixelHeight;
 
     public static void load() {
         
@@ -40,6 +44,15 @@ public class Assets {
         pco = new Player();
         
         tiledMap = new TmxMapLoader().load("maps/demoMap.tmx");
+        prop = tiledMap.getProperties();
+        
+        mapWidth = prop.get("width", Integer.class);
+        mapHeight = prop.get("height", Integer.class);
+        tilePixelWidth = prop.get("tilewidth", Integer.class);
+        tilePixelHeight = prop.get("tileheight", Integer.class);
+        
+        mapPixelWidth = mapWidth * tilePixelWidth;
+        mapPixelHeight = mapHeight * tilePixelHeight;
         
         walkRightSpriteSheet = new TextureAtlas(Gdx.files.internal("Sprites/SpriteSheets/right/StickmanWalkingRight.atlas"));
         walkForwardSpriteSheet = new TextureAtlas(Gdx.files.internal("Sprites/SpriteSheets/forward/StickmanWalkingForward.atlas"));

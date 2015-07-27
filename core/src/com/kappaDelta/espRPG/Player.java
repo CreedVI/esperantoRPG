@@ -1,7 +1,5 @@
 package com.kappaDelta.espRPG;
 
-import com.kappaDelta.espRPG.Assets.*;
-
 public class Player {
 
     // Can the player move (N, E, S, W)?
@@ -10,7 +8,7 @@ public class Player {
 
     // In which direction is the player facing (N, E, S, W)?
     // S as default value so char sprite is facing the camera.
-    char facing = 'S';
+    static char facing = 'S';
 
     int speed = 2; // Player speed in tiles per second
     int pcoWidth = 32; // Player Controlled Object (PCO) is 32 pixels tall 
@@ -51,39 +49,5 @@ public class Player {
     public boolean canMove() {
         return canMove('X'); // Return the general canMove if no direction is given
     }
-
-    public static void movementAnimations(char keyPressed) {
-        
-        /*if (Assets.timer < 4) {
-            Assets.timer += 0.1f;
-        } else {
-            Assets.timer = 0;
-        }
-        if (N) {
-            Assets.mainCharSprite = Assets.mainCharDown_Still;
-            //General animation structure
-            //Subject to change depending on spritesheet
-            /*if(Assets.timer > 0 && Assets.timer < 1){
-                System.out.println();
-             }
-             else if(Assets.timer > 1 && Assets.timer < 2){
-                System.out.println();
-             }
-             else if(Assets.timer > 2 && Assets.timer < 3){
-                System.out.println();
-             }
-             else if(Assets.timer > 3 && Assets.timer < 4){
-                System.out.println();
-             }
-        }
-        else if(E){
-            Assets.mainCharSprite = Assets.mainCharDown_Still;
-        }
-        else if(S){
-            Assets.mainCharSprite = Assets.mainCharDown_Still;
-        }
-        else if(W){
-            Assets.mainCharSprite = Assets.mainCharDown_Still;
-        }*/
-    }
+    
 }
