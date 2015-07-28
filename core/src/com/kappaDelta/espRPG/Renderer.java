@@ -37,10 +37,10 @@ public class Renderer {
         
         if(!kl.handleMovementKeys(c.getCamera())){
             Assets.batch.begin();
-            Assets.batch.draw(Assets.mainChar, (Assets.w/2) - 16, Assets.h/2);
+            Assets.batch.draw(Assets.mainChar, Player.xPos, Player.yPos);
             Assets.batch.end();
         }
-        System.out.println(c.camera.position.x +", "+ c.camera.position.y);
+        System.out.println(Player.xPos +", "+ Player.yPos);
 
         return true;
     }
@@ -54,7 +54,7 @@ public class Renderer {
                 Assets.mainChar = Assets.mainCharLeft;
                 
                 Assets.batch.begin();
-                Assets.batch.draw(Assets.walkLeft.getKeyFrame(Assets.elapsedTime, true), (Assets.w/2) - 16, Assets.h/2);
+                Assets.batch.draw(Assets.walkLeft.getKeyFrame(Assets.elapsedTime, true), Player.xPos, Player.yPos);
                 Assets.batch.end();
 
                 break;
@@ -66,7 +66,7 @@ public class Renderer {
                 Assets.mainChar = Assets.mainCharForward;
                 
                 Assets.batch.begin();
-                Assets.batch.draw(Assets.walkForward.getKeyFrame(Assets.elapsedTime, true), (Assets.w/2) - 16, Assets.h/2);
+                Assets.batch.draw(Assets.walkForward.getKeyFrame(Assets.elapsedTime, true), Player.xPos, Player.yPos);
                 Assets.batch.end();
 
                 break;
@@ -78,7 +78,7 @@ public class Renderer {
                 Assets.mainChar = Assets.mainCharRight;
                 
                 Assets.batch.begin();
-                Assets.batch.draw(Assets.walkRight.getKeyFrame(Assets.elapsedTime, true),(Assets.w/2) - 16, Assets.h/2);
+                Assets.batch.draw(Assets.walkRight.getKeyFrame(Assets.elapsedTime, true),Player.xPos, Player.yPos);
                 Assets.batch.end();
 
                 break;
@@ -90,7 +90,7 @@ public class Renderer {
                 Assets.mainChar = Assets.mainCharUp;
                 
                 Assets.batch.begin();
-                Assets.batch.draw(Assets.walkUp.getKeyFrame(Assets.elapsedTime, true), (Assets.w/2) - 16, Assets.h/2);
+                Assets.batch.draw(Assets.walkUp.getKeyFrame(Assets.elapsedTime, true), Player.xPos, Player.yPos);
                 Assets.batch.end();
 
                 break;
