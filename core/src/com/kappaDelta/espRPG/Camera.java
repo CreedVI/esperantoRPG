@@ -34,9 +34,11 @@ public class Camera {
 
                         if (camera.position.y + (Assets.h / 2) >= Assets.mapPixelHeight) {
                             Player.yPos += Player.speed;
+                            Player.pcoBody.y += Player.speed;
                         }
                         else {
                             camera.translate(0, 2);
+                            Player.pcoBody.y += Player.speed;
                         }
                         break;
 
@@ -45,10 +47,12 @@ public class Camera {
                         if (camera.position.y - (Assets.h / 2) <= 0) {
                             
                             Player.yPos -= Player.speed;
+                            Player.pcoBody.y -= Player.speed;
 
                         }
                         else {
                             camera.translate(0, -2);
+                            Player.pcoBody.y -= Player.speed;
                         }
                         break;
 
@@ -58,7 +62,6 @@ public class Camera {
             }
 
             else if (Player.yPos != Assets.h / 2 ) {
-                System.out.println("asdfjasldkfj;asldkjf;klasjdfl;skadjf;lakjd");
                 Player.moveChar(direction);
             }
         }
@@ -69,9 +72,11 @@ public class Camera {
                     case 'E':
                         if (camera.position.x + (Assets.w / 2) >= Assets.mapPixelWidth) {
                             Player.xPos += Player.speed;
+                            Player.pcoBody.x += Player.speed;
                         }
                         else {
                             camera.translate(2, 0);
+                            Player.pcoBody.x += Player.speed;
                         }
                         break;
                         
@@ -80,9 +85,11 @@ public class Camera {
                         //check for x limit
                         if (camera.position.x - (Assets.w / 2) <= 0) {
                             Player.xPos -= Player.speed;
+                            Player.pcoBody.x -= Player.speed;
                         }
                         else {
                             camera.translate(-2, 0);
+                            Player.pcoBody.x -= Player.speed;
                         }
                         break;
 
@@ -92,7 +99,6 @@ public class Camera {
             }
 
             else if (Player.xPos != Assets.w / 2) {
-                //System.out.println("asdfjasldkfj;asldkjf;klasjdfl;skadjf;lakjd");
                 Player.moveChar(direction);
             }
         }

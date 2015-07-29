@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" nextobjectid="15">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" nextobjectid="79">
  <tileset firstgid="1" name="image" tilewidth="32" tileheight="32">
   <image source="tiles/image.png" width="512" height="512"/>
  </tileset>
@@ -18,10 +18,47 @@
    eJzt0cENwCAMA8Cw/66UCQpU4tv+m9xJtuS3IyCnflLVfUIt18742NnNp9r7zs7/Ufp/AAAAAAAAAAAAAAAAAP5vAZznD1U=
   </data>
  </layer>
- <objectgroup name="Object Layer 1">
+ <objectgroup name="objects">
   <object id="9" type="Tree" x="705" y="734" width="94" height="131"/>
   <object id="10" type="Tree" x="929" y="702" width="94" height="131"/>
   <object id="11" type="Tree" x="448" y="577" width="95" height="127"/>
   <object id="12" type="Tree" x="768" y="927" width="93" height="133.606"/>
+  <object id="17" x="1088" y="607" width="94" height="128"/>
+  <object id="18" x="1344" y="734" width="63" height="129"/>
+  <object id="19" x="1856" y="545" width="95" height="127"/>
+  <object id="20" x="1888" y="768" width="63" height="127"/>
+  <object id="21" x="1631" y="864" width="66" height="129"/>
+  <object id="22" x="1986" y="1088" width="65" height="129"/>
+  <object id="23" x="1888" y="1217" width="95" height="127"/>
+  <object id="24" x="1440" y="1055" width="95" height="129"/>
+  <object id="25" x="1248" y="1056" width="63" height="129"/>
+  <object id="26" x="1441" y="1216" width="63" height="127"/>
+  <object id="27" x="1184" y="1215" width="95" height="128"/>
+  <object id="28" x="1055" y="928" width="97" height="128"/>
+  <object id="29" x="896" y="1184" width="96" height="128"/>
+  <object id="30" x="735" y="1280" width="100" height="128"/>
+  <object id="31" x="544" y="896" width="65" height="127"/>
+  <object id="32" x="416" y="991" width="96" height="129"/>
+  <object id="33" x="544" y="1086" width="64" height="130"/>
+  <object id="34" x="352" y="1152" width="65" height="128"/>
+  <object id="35" x="128" y="1247" width="96" height="130"/>
+  <object id="36" x="384" y="768" width="64" height="128"/>
+  <object id="37" x="448" y="1375" width="95" height="129"/>
+  <object id="38" x="544" y="1536" width="64" height="128"/>
+  <object id="39" x="32" y="1569" width="95" height="127"/>
+  <object id="40" x="160" y="1630" width="97" height="131"/>
+  <object id="41" x="864" y="1312" width="65" height="128"/>
+  <object id="42" x="1055" y="1406" width="97" height="131"/>
+  <object id="43" x="1568" y="1665" width="95" height="127"/>
+  <object id="44" x="1664" y="1343" width="96" height="130"/>
+  <object id="45" x="1856" y="1407" width="65" height="130"/>
+  <object id="46" x="1984" y="1599" width="76" height="128"/>
+  <object id="67" x="1838.5" y="236.25" width="34.75" height="51.25"/>
+  <object id="69" x="1707.25" y="237.25" width="38.25" height="49.25"/>
+  <object id="71" x="1705" y="163.25" width="40.5" height="60.25"/>
+  <object id="72" x="1838" y="165" width="36" height="58.5"/>
+  <object id="74" x="1649.33" y="0" width="110.667" height="190.667"/>
+  <object id="76" x="1824" y="0" width="116.667" height="192.667"/>
+  <object id="77" x="1760.67" y="0" width="64" height="128"/>
  </objectgroup>
 </map>

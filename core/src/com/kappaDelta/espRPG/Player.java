@@ -1,5 +1,13 @@
 package com.kappaDelta.espRPG;
 
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
+import com.badlogic.gdx.maps.objects.CircleMapObject;
+import com.badlogic.gdx.maps.objects.PolygonMapObject;
+import com.badlogic.gdx.maps.objects.PolylineMapObject;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
+import com.badlogic.gdx.math.*;
+
 public class Player {
 
     // Can the player move (N, E, S, W)?
@@ -13,8 +21,9 @@ public class Player {
     static int speed = 2; // Player speed in tiles per second
     static int pcoWidth = 32; // Player Controlled Object (PCO) is 32 pixels tall 
     static int pcoHeight = 32; // Player Controlled Object (PCO) is 32 pixels wide
-    static int xPos = Assets.w/2 - (pcoWidth/2);
-    static int yPos = Assets.h/2;
+    static int xPos = 0 /*Assets.w/2 - (pcoWidth/2)*/;
+    static int yPos = 0 /*Assets.h/2*/;
+    static Rectangle pcoBody = new Rectangle(xPos,yPos,pcoWidth,pcoHeight);
 
     public void setFacing(char direction) {
         facing = direction;
@@ -66,31 +75,192 @@ public class Player {
             case 'N':
                 if(yPos + pcoHeight < Assets.h){
                     yPos += speed;
+                    pcoBody.y += speed;
                 }
                 break;
             
             case 'E':
                 if(xPos + pcoWidth < Assets.w){
                     xPos += speed;
+                    pcoBody.x += speed;
                 }
                 break;
             
             case 'S':
                 if(yPos > 0){
                     yPos -= speed;
+                    pcoBody.y -= speed;
                 }
                 break;
                 
             case 'W':
                 if(xPos > 0){
                     xPos -= speed;
+                    pcoBody.x -= speed;
                 }
                 break;
                 
             default:
                 break;
         }
-        
+
+
+    }
+
+    public static boolean collide(char direction){
+        /*TODO
+         - Get objects from Tiled object layer
+         - Check if player and object will collide
+         - 
+         */
+
+        MapObjects objects = Assets.tiledMap.getLayers().get("objects").getObjects();
+
+        switch (direction){
+            case 'N':
+
+                for(MapObject object : objects) {
+                    if (object instanceof RectangleMapObject) {
+                        Rectangle rect = ((RectangleMapObject) object).getRectangle();
+                        // do something with rect...
+                        System.out.println("rect at " + rect.x +", "+ rect.y);
+
+                        if(rect.contains(pcoBody.x,pcoBody.y + pcoHeight + speed)){
+                            return true;
+                        }
+
+                    }
+                    /*else if (object instanceof PolygonMapObject) {
+                        Polygon polygon = ((PolygonMapObject) object).getPolygon();
+                        // do something with polygon...
+                    }
+                    else if (object instanceof PolylineMapObject) {
+                        Polyline chain = ((PolylineMapObject) object).getPolyline();
+                        // do something with chain...
+                    }
+                    else if (object instanceof CircleMapObject) {
+                        Circle circle = ((CircleMapObject) object).getCircle();
+                        // do something with circle...
+                    }*/
+                }
+
+                break;
+
+            case 'E':
+
+                for(MapObject object : objects) {
+                    if (object instanceof RectangleMapObject) {
+                        Rectangle rect = ((RectangleMapObject) object).getRectangle();
+                        // do something with rect...
+                        System.out.println("rect at " + rect.x +", "+ rect.y);
+
+                        if(rect.contains(pcoBody.x + pcoWidth + speed, pcoBody.y)){
+                            return true;
+                        }
+
+                    }
+                    /*else if (object instanceof PolygonMapObject) {
+                        Polygon polygon = ((PolygonMapObject) object).getPolygon();
+                        // do something with polygon...
+                    }
+                    else if (object instanceof PolylineMapObject) {
+                        Polyline chain = ((PolylineMapObject) object).getPolyline();
+                        // do something with chain...
+                    }
+                    else if (object instanceof CircleMapObject) {
+                        Circle circle = ((CircleMapObject) object).getCircle();
+                        // do something with circle...
+                    }*/
+                }
+
+                break;
+
+            case 'S':
+
+                for(MapObject object : objects) {
+                    if (object instanceof RectangleMapObject) {
+                        Rectangle rect = ((RectangleMapObject) object).getRectangle();
+                        // do something with rect...
+                        System.out.println("rect at " + rect.x +", "+ rect.y);
+
+                        if(rect.contains(pcoBody.x,pcoBody.y - speed)){
+                            return true;
+                        }
+
+
+                    }
+                    /*else if (object instanceof PolygonMapObject) {
+                        Polygon polygon = ((PolygonMapObject) object).getPolygon();
+                        // do something with polygon...
+                    }
+                    else if (object instanceof PolylineMapObject) {
+                        Polyline chain = ((PolylineMapObject) object).getPolyline();
+                        // do something with chain...
+                    }
+                    else if (object instanceof CircleMapObject) {
+                        Circle circle = ((CircleMapObject) object).getCircle();
+                        // do something with circle...
+                    }*/
+                }
+
+                break;
+
+            case 'W':
+
+                for(MapObject object : objects) {
+                    if (object instanceof RectangleMapObject) {
+                        Rectangle rect = ((RectangleMapObject) object).getRectangle();
+                        // do something with rect...
+                        System.out.println("rect at " + rect.x +", "+ rect.y);
+
+                        if(rect.contains(pcoBody.x - speed, pcoBody.y)){
+                            return true;
+                        }
+
+                    }
+                    /*else if (object instanceof PolygonMapObject) {
+                        Polygon polygon = ((PolygonMapObject) object).getPolygon();
+                        // do something with polygon...
+                    }
+                    else if (object instanceof PolylineMapObject) {
+                        Polyline chain = ((PolylineMapObject) object).getPolyline();
+                        // do something with chain...
+                    }
+                    else if (object instanceof CircleMapObject) {
+                        Circle circle = ((CircleMapObject) object).getCircle();
+                        // do something with circle...
+                    }*/
+                }
+
+                break;
+        }
+
+        /*for(MapObject object : objects) {
+            if (object instanceof RectangleMapObject) {
+                Rectangle rect = ((RectangleMapObject) object).getRectangle();
+                // do something with rect...
+                System.out.println("rect at " + rect.x +", "+ rect.y);
+            }
+            else if (object instanceof PolygonMapObject) {
+                Polygon polygon = ((PolygonMapObject) object).getPolygon();
+                // do something with polygon...
+            }
+            else if (object instanceof PolylineMapObject) {
+                Polyline chain = ((PolylineMapObject) object).getPolyline();
+                // do something with chain...
+            }
+            else if (object instanceof CircleMapObject) {
+                Circle circle = ((CircleMapObject) object).getCircle();
+                // do something with circle...
+            }
+        }
+
+        /*if(objects != null){
+            System.out.println(";ladskjfk;ladsj;fjds;kljf;lskdjf;lkj");
+            return true;
+        }*/
+
+        return false;
     }
     
 }

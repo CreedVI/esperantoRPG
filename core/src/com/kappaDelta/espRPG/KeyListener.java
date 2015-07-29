@@ -3,7 +3,6 @@ package com.kappaDelta.espRPG;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 
 public class KeyListener implements InputProcessor {
 
@@ -11,29 +10,40 @@ public class KeyListener implements InputProcessor {
 
     }
 
-    public boolean handleMovementKeys(OrthographicCamera camera) {
+    public boolean handleMovementKeys() {
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)) {
-            Renderer.drawMainChar('a');
-            //camera.translate(-2, 0);
-            Camera.checkBounds('W');
+            if(!Player.collide('W')) {
+                Renderer.drawMainChar('a');
+                Camera.checkBounds('W');
+                return true;
+            }
             
-            return true;
+            return false;
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D)) {
-            Renderer.drawMainChar('d');
-            Camera.checkBounds('E');
+            if(!Player.collide('E')) {
+                Renderer.drawMainChar('d');
+                Camera.checkBounds('E');
+                return true;
+            }
              
-            return true;
+            return false;
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W)) {
-            Renderer.drawMainChar('w');
-            Camera.checkBounds('N');
-            return true;
+            if(!Player.collide('N')) {
+                Renderer.drawMainChar('w');
+                Camera.checkBounds('N');
+                return true;
+            }
+            return false;
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S)) {
-            Renderer.drawMainChar('s');
-            Camera.checkBounds('S');
-            return true;
+            if(!Player.collide('S')) {
+                Renderer.drawMainChar('s');
+                Camera.checkBounds('S');
+                return true;
+            }
+            return false;
         }
 
         return false;

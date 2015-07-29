@@ -35,12 +35,12 @@ public class Renderer {
         tiledMapRenderer.setView(c.getCamera());
         tiledMapRenderer.render();
         
-        if(!kl.handleMovementKeys(c.getCamera())){
+        if(!kl.handleMovementKeys()){
             Assets.batch.begin();
             Assets.batch.draw(Assets.mainChar, Player.xPos, Player.yPos);
             Assets.batch.end();
         }
-        System.out.println(Player.xPos +", "+ Player.yPos);
+        System.out.println(Player.pcoBody.x +", "+ Player.pcoBody.y);
 
         return true;
     }
