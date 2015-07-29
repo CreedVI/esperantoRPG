@@ -108,11 +108,6 @@ public class Player {
     }
 
     public static boolean collide(char direction){
-        /*TODO
-         - Get objects from Tiled object layer
-         - Check if player and object will collide
-         - 
-         */
 
         MapObjects objects = Assets.tiledMap.getLayers().get("objects").getObjects();
 
@@ -130,18 +125,6 @@ public class Player {
                         }
 
                     }
-                    /*else if (object instanceof PolygonMapObject) {
-                        Polygon polygon = ((PolygonMapObject) object).getPolygon();
-                        // do something with polygon...
-                    }
-                    else if (object instanceof PolylineMapObject) {
-                        Polyline chain = ((PolylineMapObject) object).getPolyline();
-                        // do something with chain...
-                    }
-                    else if (object instanceof CircleMapObject) {
-                        Circle circle = ((CircleMapObject) object).getCircle();
-                        // do something with circle...
-                    }*/
                 }
 
                 break;
@@ -154,23 +137,13 @@ public class Player {
                         // do something with rect...
                         System.out.println("rect at " + rect.x +", "+ rect.y);
 
-                        if(rect.contains(pcoBody.x + pcoWidth + speed, pcoBody.y)){
-                            return true;
+                        for(int i = 0 ; i <= pcoHeight; i++) {
+                            if (rect.contains(pcoBody.x + pcoWidth + speed, pcoBody.y + i)) {
+                                return true;
+                            }
                         }
 
                     }
-                    /*else if (object instanceof PolygonMapObject) {
-                        Polygon polygon = ((PolygonMapObject) object).getPolygon();
-                        // do something with polygon...
-                    }
-                    else if (object instanceof PolylineMapObject) {
-                        Polyline chain = ((PolylineMapObject) object).getPolyline();
-                        // do something with chain...
-                    }
-                    else if (object instanceof CircleMapObject) {
-                        Circle circle = ((CircleMapObject) object).getCircle();
-                        // do something with circle...
-                    }*/
                 }
 
                 break;
@@ -181,26 +154,14 @@ public class Player {
                     if (object instanceof RectangleMapObject) {
                         Rectangle rect = ((RectangleMapObject) object).getRectangle();
                         // do something with rect...
-                        System.out.println("rect at " + rect.x +", "+ rect.y);
+                        System.out.println("rect at " + rect.x + ", " + rect.y);
 
-                        if(rect.contains(pcoBody.x,pcoBody.y - speed)){
+                        if (rect.contains(pcoBody.x, pcoBody.y - speed)) {
                             return true;
                         }
 
 
                     }
-                    /*else if (object instanceof PolygonMapObject) {
-                        Polygon polygon = ((PolygonMapObject) object).getPolygon();
-                        // do something with polygon...
-                    }
-                    else if (object instanceof PolylineMapObject) {
-                        Polyline chain = ((PolylineMapObject) object).getPolyline();
-                        // do something with chain...
-                    }
-                    else if (object instanceof CircleMapObject) {
-                        Circle circle = ((CircleMapObject) object).getCircle();
-                        // do something with circle...
-                    }*/
                 }
 
                 break;
@@ -213,23 +174,13 @@ public class Player {
                         // do something with rect...
                         System.out.println("rect at " + rect.x +", "+ rect.y);
 
-                        if(rect.contains(pcoBody.x - speed, pcoBody.y)){
-                            return true;
+                        for(int i = 0 ; i <= pcoHeight; i++) {
+                            if (rect.contains(pcoBody.x - speed, pcoBody.y + i)) {
+                                return true;
+                            }
                         }
 
                     }
-                    /*else if (object instanceof PolygonMapObject) {
-                        Polygon polygon = ((PolygonMapObject) object).getPolygon();
-                        // do something with polygon...
-                    }
-                    else if (object instanceof PolylineMapObject) {
-                        Polyline chain = ((PolylineMapObject) object).getPolyline();
-                        // do something with chain...
-                    }
-                    else if (object instanceof CircleMapObject) {
-                        Circle circle = ((CircleMapObject) object).getCircle();
-                        // do something with circle...
-                    }*/
                 }
 
                 break;
@@ -253,11 +204,6 @@ public class Player {
                 Circle circle = ((CircleMapObject) object).getCircle();
                 // do something with circle...
             }
-        }
-
-        /*if(objects != null){
-            System.out.println(";ladskjfk;ladsj;fjds;kljf;lskdjf;lkj");
-            return true;
         }*/
 
         return false;
