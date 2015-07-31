@@ -6,6 +6,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class Renderer {
     
@@ -17,6 +18,8 @@ public class Renderer {
     public Renderer(Camera c, KeyListener kl) {
         this.c = c;
         this.kl = kl;
+
+
 
         tiledMap = new TmxMapLoader().load("maps/demoMap.tmx");
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
@@ -40,7 +43,9 @@ public class Renderer {
             Assets.batch.draw(Assets.mainChar, Player.xPos, Player.yPos);
             Assets.batch.end();
         }
-        System.out.println(Player.pcoBody.x +", "+ Player.pcoBody.y);
+
+        Assets.gameWorld.act(Assets.elapsedTime);
+        Assets.gameWorld.draw();
 
         return true;
     }
@@ -49,9 +54,6 @@ public class Renderer {
         switch (keyPressed) {
             case 'a':
                 System.out.println("a");
-                
-                Player.facing = 'W';
-                Assets.mainChar = Assets.mainCharLeft;
                 
                 Assets.batch.begin();
                 Assets.batch.draw(Assets.walkLeft.getKeyFrame(Assets.elapsedTime, true), Player.xPos, Player.yPos);
@@ -62,9 +64,6 @@ public class Renderer {
             case 's':
                 System.out.println("s");
                 
-                Player.facing = 'S';
-                Assets.mainChar = Assets.mainCharForward;
-                
                 Assets.batch.begin();
                 Assets.batch.draw(Assets.walkForward.getKeyFrame(Assets.elapsedTime, true), Player.xPos, Player.yPos);
                 Assets.batch.end();
@@ -73,9 +72,6 @@ public class Renderer {
 
             case 'd':
                 System.out.println("d");
-
-                Player.facing = 'E';
-                Assets.mainChar = Assets.mainCharRight;
                 
                 Assets.batch.begin();
                 Assets.batch.draw(Assets.walkRight.getKeyFrame(Assets.elapsedTime, true),Player.xPos, Player.yPos);
@@ -85,9 +81,6 @@ public class Renderer {
 
             case 'w':
                 System.out.println("w");
-                
-                Player.facing = 'N';
-                Assets.mainChar = Assets.mainCharUp;
                 
                 Assets.batch.begin();
                 Assets.batch.draw(Assets.walkUp.getKeyFrame(Assets.elapsedTime, true), Player.xPos, Player.yPos);

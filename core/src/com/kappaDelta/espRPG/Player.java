@@ -1,14 +1,13 @@
 package com.kappaDelta.espRPG;
 
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapObjects;
-import com.badlogic.gdx.maps.objects.CircleMapObject;
-import com.badlogic.gdx.maps.objects.PolygonMapObject;
-import com.badlogic.gdx.maps.objects.PolylineMapObject;
-import com.badlogic.gdx.maps.objects.RectangleMapObject;
-import com.badlogic.gdx.math.*;
 
-public class Player {
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.*;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
+
+public class Player extends Actor {
 
     // Can the player move (N, E, S, W)?
     boolean canMove = true, canMoveN = true, canMoveE = true, canMoveS = true, canMoveW = true;
@@ -25,8 +24,9 @@ public class Player {
     static int yPos = 0 /*Assets.h/2*/;
     static Rectangle pcoBody = new Rectangle(xPos,yPos,pcoWidth,pcoHeight);
 
-    public void setFacing(char direction) {
-        facing = direction;
+    public Player(){
+        setBounds(pcoBody.getX(),pcoBody.getY(),pcoBody.getWidth(),pcoBody.getHeight());
+        setTouchable(Touchable.enabled);
     }
 
     public char getFacing() {
@@ -59,14 +59,6 @@ public class Player {
 
     public boolean canMove() {
         return canMove('X'); // Return the general canMove if no direction is given
-    }
-    
-    public int getY(){
-        return yPos;
-    }
-    
-    public int getX(){
-        return xPos;
     }
     
     public static void moveChar(char direction){
@@ -107,104 +99,7 @@ public class Player {
 
     }
 
-    public static boolean collide(char direction){
-
-        MapObjects objects = Assets.tiledMap.getLayers().get("objects").getObjects();
-
-        switch (direction){
-            case 'N':
-
-                for(MapObject object : objects) {
-                    if (object instanceof RectangleMapObject) {
-                        Rectangle rect = ((RectangleMapObject) object).getRectangle();
-                        // do something with rect...
-                        System.out.println("rect at " + rect.x +", "+ rect.y);
-
-                        if(rect.contains(pcoBody.x,pcoBody.y + pcoHeight + speed)){
-                            return true;
-                        }
-
-                    }
-                }
-
-                break;
-
-            case 'E':
-
-                for(MapObject object : objects) {
-                    if (object instanceof RectangleMapObject) {
-                        Rectangle rect = ((RectangleMapObject) object).getRectangle();
-                        // do something with rect...
-                        System.out.println("rect at " + rect.x +", "+ rect.y);
-
-                        for(int i = 0 ; i <= pcoHeight; i++) {
-                            if (rect.contains(pcoBody.x + pcoWidth + speed, pcoBody.y + i)) {
-                                return true;
-                            }
-                        }
-
-                    }
-                }
-
-                break;
-
-            case 'S':
-
-                for(MapObject object : objects) {
-                    if (object instanceof RectangleMapObject) {
-                        Rectangle rect = ((RectangleMapObject) object).getRectangle();
-                        // do something with rect...
-                        System.out.println("rect at " + rect.x + ", " + rect.y);
-
-                        if (rect.contains(pcoBody.x, pcoBody.y - speed)) {
-                            return true;
-                        }
-
-
-                    }
-                }
-
-                break;
-
-            case 'W':
-
-                for(MapObject object : objects) {
-                    if (object instanceof RectangleMapObject) {
-                        Rectangle rect = ((RectangleMapObject) object).getRectangle();
-                        // do something with rect...
-                        System.out.println("rect at " + rect.x +", "+ rect.y);
-
-                        for(int i = 0 ; i <= pcoHeight; i++) {
-                            if (rect.contains(pcoBody.x - speed, pcoBody.y + i)) {
-                                return true;
-                            }
-                        }
-
-                    }
-                }
-
-                break;
-        }
-
-        /*for(MapObject object : objects) {
-            if (object instanceof RectangleMapObject) {
-                Rectangle rect = ((RectangleMapObject) object).getRectangle();
-                // do something with rect...
-                System.out.println("rect at " + rect.x +", "+ rect.y);
-            }
-            else if (object instanceof PolygonMapObject) {
-                Polygon polygon = ((PolygonMapObject) object).getPolygon();
-                // do something with polygon...
-            }
-            else if (object instanceof PolylineMapObject) {
-                Polyline chain = ((PolylineMapObject) object).getPolyline();
-                // do something with chain...
-            }
-            else if (object instanceof CircleMapObject) {
-                Circle circle = ((CircleMapObject) object).getCircle();
-                // do something with circle...
-            }
-        }*/
+    public static boolean interact(){
 
         return false;
     }

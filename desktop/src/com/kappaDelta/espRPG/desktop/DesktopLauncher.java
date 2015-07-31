@@ -2,7 +2,7 @@ package com.kappaDelta.espRPG.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.kappaDelta.espRPG.Game;
+import com.kappaDelta.espRPG.Boot;
 
 public class DesktopLauncher {
 
@@ -15,6 +15,6 @@ public class DesktopLauncher {
         config.height = 640;
         config.resizable = false;
 
-        LwjglApplication lwjglApplication = new LwjglApplication(new Game(), config);
+        LwjglApplication lwjglApplication = new LwjglApplication(new Boot(), config);
     }
 }
