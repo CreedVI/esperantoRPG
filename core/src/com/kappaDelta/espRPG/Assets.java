@@ -1,5 +1,6 @@
 package com.kappaDelta.espRPG;
 
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -10,12 +11,8 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.Action;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import javafx.scene.Scene;
-
-import java.awt.event.ActionEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class Assets {
 
@@ -28,8 +25,12 @@ public class Assets {
     static TextureAtlas walkRightSpriteSheet,walkLeftSpriteSheet,
             walkForwardSpriteSheet,walkUpSpriteSheet;
 
-    static Texture mainCharForward,mainCharLeft,mainCharRight,
-            mainCharUp,mainChar,strigo;
+    static Texture mainCharForward;
+    static Texture mainCharLeft;
+    static Texture mainCharRight;
+    static Texture mainCharUp;
+    static Texture mainChar;
+    static Texture strigo;
 
     
     static Animation walkLeft,walkRight,walkUp,walkForward;
@@ -43,16 +44,23 @@ public class Assets {
     static int w = Gdx.graphics.getWidth();
     static int h = Gdx.graphics.getHeight();
     static int mapWidth, mapHeight, tilePixelWidth, tilePixelHeight, mapPixelWidth, mapPixelHeight;
+    static int optionIndex = 0;
 
-    static Stage gameWorld;
+    static Boolean gamePaused;
 
-    public static Action load() {
+    static Skin uiskin;
 
-        gameWorld = new Stage(new ScreenViewport());
+    static String menuOptions[] = {"Party","Inventory","Dictionary","Quests","Options","Quit"};
+
+    public static boolean load() {
 
         batch = new SpriteBatch();
         
         pco = new Player();
+
+        gamePaused = false;
+
+        uiskin = new Skin(Gdx.files.internal("UISkin/uiskin.json"));
         
         tiledMap = new TmxMapLoader().load("maps/demoMap.tmx");
         prop = tiledMap.getProperties();
@@ -80,11 +88,12 @@ public class Assets {
         mainCharLeft = new Texture(Gdx.files.internal("Sprites/MainCharTmp/RawSprites/left/f0.png"));
         mainCharUp = new Texture(Gdx.files.internal("Sprites/MainCharTmp/RawSprites/up/f0.png"));
         strigo = new Texture(Gdx.files.internal("Sprites/Animals/S/Strigo.png"));
-        
+
         font = new BitmapFont();
         
         mainChar = mainCharForward;
-        return null;
+
+        return true;
     }
 
     public static void dispose(){
@@ -103,6 +112,5 @@ public class Assets {
         walkUpSpriteSheet.dispose();
 
         tiledMap.dispose();
-        gameWorld.dispose();
     }
 }

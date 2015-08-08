@@ -29,10 +29,12 @@ public class Loader implements Screen {
         stage.addActor(splash);
         stage.addActor(loadCircle);
 
+        Assets.load();
+
         loadCircle.addAction(Actions.sequence(Actions.rotateBy(-2780, 2.5f), Actions.run(new Runnable() {
             @Override
             public void run() {
-                Assets.load();
+                //Assets.load();
                 ((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenu());
             }
         })));

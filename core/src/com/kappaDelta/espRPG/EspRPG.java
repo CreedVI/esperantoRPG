@@ -8,7 +8,6 @@ public class EspRPG implements Screen {
     Player p;
     Camera c;
     KeyListener kl;
-    Strigo strigo;
 
     @Override
     public void show() {
@@ -16,10 +15,6 @@ public class EspRPG implements Screen {
         kl = new KeyListener();
         r = new Renderer(c, kl);
         p = new Player();
-        strigo = new Strigo();
-
-        Assets.gameWorld.addActor(p);
-        Assets.gameWorld.addActor(strigo);
     }
 
     @Override
@@ -34,21 +29,29 @@ public class EspRPG implements Screen {
 
     @Override
     public void pause() {
+        
+        Assets.gamePaused = true;
 
     }
 
     @Override
     public void resume() {
 
+        Assets.gamePaused = false;
+
     }
 
     @Override
     public void hide() {
 
+        dispose();
+
     }
 
     @Override
     public void dispose() {
+
+        Assets.dispose();
 
     }
 }

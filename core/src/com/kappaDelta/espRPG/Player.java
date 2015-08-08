@@ -1,8 +1,5 @@
 package com.kappaDelta.espRPG;
 
-
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
@@ -99,7 +96,26 @@ public class Player extends Actor {
 
     }
 
-    public static boolean interact(){
+    public static boolean interact(char direction){
+
+        switch (direction){
+
+            case 'N':
+                break;
+
+            case 'E':
+                break;
+
+            case 'S':
+                break;
+
+            case 'W':
+                break;
+
+            default:
+                break;
+
+        }
 
         return false;
     }

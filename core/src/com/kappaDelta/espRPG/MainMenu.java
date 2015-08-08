@@ -6,7 +6,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -16,7 +15,6 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 public class MainMenu implements Screen {
 
     Stage menu;
-    Skin uiskin;
     TextButton button0,button1,button2;
     Table table;
 
@@ -68,11 +66,10 @@ public class MainMenu implements Screen {
         table = new Table();
 
         menu = new Stage(new ScreenViewport());
-        uiskin = new Skin(Gdx.files.internal("UISkin/uiskin.json"));
 
-        button0 = new TextButton("New Game", uiskin, "default");
-        button1 = new TextButton("Continue", uiskin, "default");
-        button2 = new TextButton("Settings", uiskin, "default");
+        button0 = new TextButton("New Game", Assets.uiskin, "default");
+        button1 = new TextButton("Continue", Assets.uiskin, "default");
+        button2 = new TextButton("Settings", Assets.uiskin, "default");
 
         button0.setWidth(200f);
         button0.setHeight(50f);
@@ -97,8 +94,23 @@ public class MainMenu implements Screen {
 
         button0.addListener(new ClickListener() {
             @Override
-            public void clicked(InputEvent event, float x, float y){
+            public void clicked(InputEvent event, float x, float y) {
                 ((Game) Gdx.app.getApplicationListener()).setScreen(new EspRPG());
+            }
+        });
+
+        button1.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y){
+                //((Game) Gdx.app.getApplicationListener()).setScreen(new contScreen());
+                System.out.println("Save system not implemented yet");
+            }
+        });
+
+        button2.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y){
+                new settingWindow();
             }
         });
 
