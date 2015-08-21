@@ -10,7 +10,8 @@ public class objectDetection {
 
     public static boolean collide(char direction){
 
-        MapObjects objects = Assets.tiledMap.getLayers().get("objects").getObjects();
+        MapObjects objects = Assets.currentMap.getLayers().get("objects").getObjects();
+        MapObjects warps = Assets.currentMap.getLayers().get("transportZones").getObjects();
 
         switch (direction){
             case 'N':
@@ -19,9 +20,27 @@ public class objectDetection {
                     if (object instanceof RectangleMapObject) {
                         Rectangle rect = ((RectangleMapObject) object).getRectangle();
                         // do something with rect...
-                        System.out.println("rect at " + rect.x +", "+ rect.y);
+                        //System.out.println("rect at " + rect.x +", "+ rect.y);
 
-                        if(rect.contains(Player.pcoBody.x,Player.pcoBody.y + Player.pcoHeight + Player.speed)){
+                        for(int i = 0 ; i <= Player.pcoWidth; i++) {
+                            if (rect.contains(Player.pcoBody.x + i, Player.pcoBody.y + Player.pcoHeight + Player.speed)) {
+                                return true;
+                            }
+                        }
+
+                    }
+                }
+
+                for(MapObject warp : warps) {
+                    if (warp instanceof RectangleMapObject) {
+                        Rectangle rect = ((RectangleMapObject) warp).getRectangle();
+                        // do something with rect...
+                        //System.out.println("warp at " + rect.x +", "+ rect.y);
+
+                        if(rect.contains(Player.pcoBody.x,Player.pcoBody.y)){
+                            MapObject mapObject = warp;
+                            System.out.println("Change maps");
+                            Renderer.changeMap(mapObject);
                             return true;
                         }
 
@@ -36,7 +55,7 @@ public class objectDetection {
                     if (object instanceof RectangleMapObject) {
                         Rectangle rect = ((RectangleMapObject) object).getRectangle();
                         // do something with rect...
-                        System.out.println("rect at " + rect.x +", "+ rect.y);
+                        //System.out.println("rect at " + rect.x +", "+ rect.y);
 
                         for(int i = 0 ; i <= Player.pcoHeight; i++) {
                             if (rect.contains(Player.pcoBody.x + Player.pcoWidth + Player.speed, Player.pcoBody.y + i)) {
@@ -55,10 +74,12 @@ public class objectDetection {
                     if (object instanceof RectangleMapObject) {
                         Rectangle rect = ((RectangleMapObject) object).getRectangle();
                         // do something with rect...
-                        System.out.println("rect at " + rect.x + ", " + rect.y);
+                        //System.out.println("rect at " + rect.x + ", " + rect.y);
 
-                        if (rect.contains(Player.pcoBody.x, Player.pcoBody.y - Player.speed)) {
-                            return true;
+                        for(int i = 0 ; i <= Player.pcoWidth; i++) {
+                            if (rect.contains(Player.pcoBody.x + i, Player.pcoBody.y - Player.speed)) {
+                                return true;
+                            }
                         }
 
 
@@ -73,7 +94,7 @@ public class objectDetection {
                     if (object instanceof RectangleMapObject) {
                         Rectangle rect = ((RectangleMapObject) object).getRectangle();
                         // do something with rect...
-                        System.out.println("rect at " + rect.x +", "+ rect.y);
+                        //System.out.println("rect at " + rect.x +", "+ rect.y);
 
                         for(int i = 0 ; i <= Player.pcoHeight; i++) {
                             if (rect.contains(Player.pcoBody.x - Player.speed, Player.pcoBody.y + i)) {
@@ -110,26 +131,119 @@ public class objectDetection {
         return false;
     }
 
-    public boolean interact(char direction){
+    public static boolean interact(char direction){
 
-        MapObjects objects = Assets.tiledMap.getLayers().get("objects").getObjects();
+        MapObjects objects;
+        String objName, obType;
 
-        switch(direction){
-            case 'N':
 
-                break;
+        if(Assets.currentMap.getLayers().get("interactables") != null) {
+            objects = Assets.currentMap.getLayers().get("interactables").getObjects();
 
-            case 'E':
-                break;
 
-            case 'S':
-                break;
+            switch (direction) {
+                case 'N':
 
-            case 'W':
-                break;
+                    for (MapObject object : objects) {
+                        if (object instanceof RectangleMapObject) {
+                            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+                            // do something with rect...
+                            System.out.println("rect at " + rect.x + ", " + rect.y);
 
-            default:
-                break;
+                            if (rect.contains(Player.pcoBody.x, Player.pcoBody.y + Player.pcoHeight + Player.speed)) {
+                                if(object.getProperties().get("Name") != null && object.getProperties().get("Type") != null) {
+
+                                    objName = object.getProperties().get("Name").toString();
+                                    obType = object.getProperties().get("Type").toString();
+
+                                    System.out.println(objName + ", " + obType + ", " + rect.x + ", " + rect.y);
+
+                                    npcInteraction.interact(objName, obType);
+                                }
+                                return true;
+                            }
+
+                        }
+                    }
+
+                    break;
+
+                case 'E':
+
+                    for (MapObject object : objects) {
+                        if (object instanceof RectangleMapObject) {
+                            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+                            // do something with rect...
+                            System.out.println("rect at " + rect.x + ", " + rect.y);
+
+                            for (int i = 0; i <= Player.pcoHeight; i++) {
+                                if (rect.contains(Player.pcoBody.x + Player.pcoWidth + Player.speed, Player.pcoBody.y + i)) {
+
+                                    objName = object.getProperties().get("Name").toString();
+                                    obType = object.getProperties().get("Type").toString();
+
+                                    System.out.println(objName + ", " + obType + ", " + rect.x + ", " + rect.y);;
+
+                                    return true;
+                                }
+
+                            }
+                        }
+                    }
+
+                    break;
+
+                case 'S':
+
+                    for (MapObject object : objects) {
+                        if (object instanceof RectangleMapObject) {
+                            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+                            // do something with rect...
+                            System.out.println("rect at " + rect.x + ", " + rect.y);
+
+                            if (rect.contains(Player.pcoBody.x, Player.pcoBody.y - Player.speed)) {
+
+                                objName = object.getProperties().get("Name").toString();
+                                obType = object.getProperties().get("Type").toString();
+
+                                System.out.println(objName + ", " + obType + ", " + rect.x + ", " + rect.y);
+
+                                return true;
+                            }
+
+                        }
+                    }
+
+                    break;
+
+                case 'W':
+
+                    for (MapObject object : objects) {
+                        if (object instanceof RectangleMapObject) {
+                            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+                            // do something with rect...
+                            System.out.println("rect at " + rect.x + ", " + rect.y);
+
+                            for (int i = 0; i <= Player.pcoHeight; i++) {
+                                if (rect.contains(Player.pcoBody.x - Player.speed, Player.pcoBody.y + i)) {
+
+                                    objName = object.getProperties().get("Name").toString();
+                                    obType = object.getProperties().get("Type").toString();
+
+                                    System.out.println(objName + ", " + obType + ", " + rect.x + ", " + rect.y);
+
+                                    return true;
+                                }
+
+                            }
+                        }
+                    }
+
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         return false;

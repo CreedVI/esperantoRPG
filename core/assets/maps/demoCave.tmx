@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="16" tileheight="16" nextobjectid="24">
+ <tileset firstgid="1" name="cave" tilewidth="16" tileheight="16">
+  <image source="tiles/cave.png" width="256" height="336"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJzt1j0SAUEQhuHeC3AER5DgBDgBbmDvww04l1qhvypCJMunduTTAkbNGzz11QTdtT29wVRmtpUqMtvSk74Mwjm2NsU8y8WRHRnKSMbh7O2RUtbycGRXJjKVWTh7e6SUrUL/cBGfR9UsZC6lnD7okVJuzGcX5n9ZysFZ/+/e869knfH87J/9s/9852f/ee7/as0baG/N2+eewDf94g5umc4OAAAAAAAAAAAAAAAAAAAAAACA73oCwJOOiA==
+  </data>
+ </layer>
+ <objectgroup name="objects">
+  <object id="2" x="240" y="208" width="16" height="16"/>
+  <object id="3" x="224" y="208" width="16" height="16"/>
+  <object id="5" x="176" y="48" width="32" height="176"/>
+  <object id="6" x="208" y="208" width="16" height="16"/>
+  <object id="11" x="208" y="192" width="16" height="16"/>
+  <object id="12" x="240" y="192" width="16" height="16"/>
+  <object id="18" x="256" y="0" width="32" height="48"/>
+  <object id="19" x="176" y="0" width="32" height="48"/>
+  <object id="20" x="208" y="0" width="48" height="32"/>
+  <object id="21" x="208" y="32" width="16" height="16"/>
+  <object id="22" x="240" y="32" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="transportZones" visible="0">
+  <object id="23" x="224" y="32" width="16" height="16">
+   <properties>
+    <property name="Destination" value="overworld1"/>
+    <property name="Name" value="cave1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="interactables">
+  <object id="8" x="224" y="208" width="16" height="16">
+   <properties>
+    <property name="Name" value="cave1WaterSpot"/>
+    <property name="Type" value="Enviornmental "/>
+   </properties>
+  </object>
+  <object id="9" name="waterSpot" x="240" y="208" width="16" height="16">
+   <properties>
+    <property name="Name" value="cave1WaterSpot"/>
+    <property name="Type" value="Enviornmental"/>
+   </properties>
+  </object>
+  <object id="10" name="waterSpot" x="208" y="208" width="16" height="16">
+   <properties>
+    <property name="Name" value="cave1WaterSpot"/>
+    <property name="Type" value="Enviornmental"/>
+   </properties>
+  </object>
+  <object id="13" name="waterSpot" x="240" y="192" width="16" height="16">
+   <properties>
+    <property name="Name" value="cave1WaterSpot"/>
+    <property name="Type" value="Enviornmental"/>
+   </properties>
+  </object>
+  <object id="14" name="waterSpot" x="208" y="192" width="16" height="16">
+   <properties>
+    <property name="Name" value="cave1WaterSpot"/>
+    <property name="Type" value="Enviornmental"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

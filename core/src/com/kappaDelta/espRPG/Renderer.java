@@ -1,9 +1,12 @@
 package com.kappaDelta.espRPG;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -17,20 +20,22 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class Renderer {
-    
-    TiledMap tiledMap;
-    TiledMapRenderer tiledMapRenderer;
-    Camera c;
+
+    static TiledMapRenderer tiledMapRenderer;
+    Cam c;
     KeyListener kl;
     static Stage gameMenu;
     static Table menuTable;
 
-    public Renderer(Camera c, KeyListener kl) {
+    Texture arrow;
+
+    public Renderer(Cam c, KeyListener kl) {
         this.c = c;
         this.kl = kl;
 
-        tiledMap = new TmxMapLoader().load("maps/demoMap.tmx");
-        tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
+        arrow = new Texture(Gdx.files.internal("UISkin/TmpBG/selectArrow.png"));
+
+        tiledMapRenderer = new OrthogonalTiledMapRenderer(Assets.currentMap);
     }
 
 
@@ -40,22 +45,24 @@ public class Renderer {
        if(Assets.gamePaused){
            kl.handleMainControls();
 
-           Sprite bg = new Sprite(new Texture(Gdx.files.internal("UISkin/TmpBG/menuBG.png")));
-
-           bg.setPosition(0, 0);
-
-           Sprite layout = new Sprite(new Texture(Gdx.files.internal("UISkin/TmpBG/mainPauseMenuLayout.png")));
-           layout.setPosition(0, 0);
-
-           Assets.batch.begin();
-           bg.draw(Assets.batch);
-           layout.draw(Assets.batch);
-           Assets.batch.end();
-
            gameMenu.act(Assets.elapsedTime);
            gameMenu.draw();
 
+           Assets.batch.begin();
+           Assets.batch.draw(arrow, Assets.arrowX, Assets.arrowY[Assets.arrowYIndex]);
+           Assets.batch.end();
+
+
            System.out.println(Assets.menuOptions[Assets.optionIndex]);
+
+       }
+
+       else if(Assets.textShowing){
+
+           //Gdx.input.setInputProcessor(Assets.gameStage);
+
+           Assets.gameStage.act();
+           Assets.gameStage.draw();
 
        }
 
@@ -72,6 +79,8 @@ public class Renderer {
            tiledMapRenderer.setView(c.getCamera());
            tiledMapRenderer.render();
 
+
+
            if(!kl.handleMainControls()){
                Assets.batch.begin();
                Assets.batch.draw(Assets.mainChar, Player.xPos, Player.yPos);
@@ -81,6 +90,35 @@ public class Renderer {
        }
 
         return true;
+    }
+
+    public static boolean changeMap(MapObject mapObject){
+
+        String map = mapObject.getProperties().get("Destination").toString();
+
+        if(map == "cave1"){
+
+            Assets.currentMap = Assets.caveMap;
+            tiledMapRenderer = new OrthogonalTiledMapRenderer(Assets.currentMap);
+
+            return true;
+
+        }
+
+        else if(map == "world"){
+
+            Assets.currentMap = Assets.worldMap;
+            tiledMapRenderer = new OrthogonalTiledMapRenderer(Assets.currentMap);
+
+            return true;
+
+        }
+
+        else {
+
+            return false;
+
+        }
     }
 
     public static boolean showMenu(char menu){
@@ -106,9 +144,21 @@ public class Renderer {
                 menuTable.setWidth(Assets.w);
                 menuTable.setPosition(0, Assets.h);
 
+                Image bg = new Image(new Texture(Gdx.files.internal("UISkin/TmpBG/menuBG.png")));
+                bg.setPosition(0, 0);
+
+                Image layout = new Image(new Texture(Gdx.files.internal("UISkin/TmpBG/mainPauseMenuLayout.png")));
+                layout.setPosition(0, 0);
+
+                Image sideBar = new Image(new Texture(Gdx.files.internal("UISkin/TmpBG/menuSideBarComplete_UP.png")));
+                sideBar.setPosition(607, 64);
+
+
                 //ImageButton party = new ImageButton(Drawable btnUp, Drawable btnDown);
 
-                gameMenu.addActor(menuTable);
+                gameMenu.addActor(bg);
+                gameMenu.addActor(layout);
+                gameMenu.addActor(sideBar);
 
                 Assets.gamePaused = true;
                 System.out.println("Paused");
@@ -132,9 +182,10 @@ public class Renderer {
 
             case 'e':
 
-                Assets.dispose();
-                gameMenu.dispose();
+                Gdx.app.getApplicationListener().dispose();
 
+                gameMenu.dispose();
+                Assets.dispose();
 
                 System.exit(0);
 

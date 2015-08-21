@@ -11,7 +11,7 @@ public class KeyListener implements InputProcessor {
     }
 
     public boolean handleMainControls() {
-        if (!Assets.gamePaused) {
+        if (!Assets.gamePaused && !Assets.textShowing) {
 
             if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)) {
 
@@ -19,7 +19,7 @@ public class KeyListener implements InputProcessor {
                 Assets.mainChar = Assets.mainCharLeft;
                 if (!objectDetection.collide('W')) {
                     Renderer.drawMainChar('a');
-                    Camera.checkBounds('W');
+                    Cam.checkBounds('W');
                     return true;
                 }
 
@@ -31,7 +31,7 @@ public class KeyListener implements InputProcessor {
                 Assets.mainChar = Assets.mainCharRight;
                 if (!objectDetection.collide('E')) {
                     Renderer.drawMainChar('d');
-                    Camera.checkBounds('E');
+                    Cam.checkBounds('E');
                     return true;
                 }
 
@@ -43,7 +43,7 @@ public class KeyListener implements InputProcessor {
                 Assets.mainChar = Assets.mainCharUp;
                 if (!objectDetection.collide('N')) {
                     Renderer.drawMainChar('w');
-                    Camera.checkBounds('N');
+                    Cam.checkBounds('N');
                     return true;
                 }
                 return false;
@@ -54,14 +54,14 @@ public class KeyListener implements InputProcessor {
                 Assets.mainChar = Assets.mainCharForward;
                 if (!objectDetection.collide('S')) {
                     Renderer.drawMainChar('s');
-                    Camera.checkBounds('S');
+                    Cam.checkBounds('S');
                     return true;
                 }
                 return false;
             }
-            else if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+            else if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
 
-                Player.interact(Player.facing);
+                objectDetection.interact(Player.facing);
 
             }
             else if (Gdx.input.isKeyJustPressed(Input.Keys.TAB)) {
@@ -73,6 +73,16 @@ public class KeyListener implements InputProcessor {
             }
         }
 
+        else if(Assets.textShowing){
+
+            if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
+
+                npcInteraction.dialog.hide();
+
+            }
+
+        }
+
         else if (Assets.gamePaused) {
 
             if (Gdx.input.isKeyJustPressed(Input.Keys.W) || Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
@@ -80,11 +90,14 @@ public class KeyListener implements InputProcessor {
                 if (Assets.optionIndex == 0) {
 
                     Assets.optionIndex = Assets.menuOptions.length - 1;
+                    Assets.arrowYIndex = Assets.arrowY.length - 1;
+
 
                 }
                 else {
 
                     Assets.optionIndex--;
+                    Assets.arrowYIndex--;
 
                 }
             }
@@ -92,10 +105,17 @@ public class KeyListener implements InputProcessor {
             else if (Gdx.input.isKeyJustPressed(Input.Keys.S)||Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
 
                 if (Assets.optionIndex == Assets.menuOptions.length - 1) {
+
                     Assets.optionIndex = 0;
+                    Assets.arrowYIndex = 0;
+
                 }
+
                 else {
+
                     Assets.optionIndex++;
+                    Assets.arrowYIndex++;
+
                 }
 
             }

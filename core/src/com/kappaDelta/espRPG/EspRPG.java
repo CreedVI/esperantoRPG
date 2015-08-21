@@ -6,12 +6,12 @@ public class EspRPG implements Screen {
 
     Renderer r;
     Player p;
-    Camera c;
+    Cam c;
     KeyListener kl;
 
     @Override
     public void show() {
-        c = new Camera();
+        c = new Cam();
         kl = new KeyListener();
         r = new Renderer(c, kl);
         p = new Player();
@@ -30,28 +30,28 @@ public class EspRPG implements Screen {
     @Override
     public void pause() {
         
-        Assets.gamePaused = true;
+        //Assets.gamePaused = true;
 
     }
 
     @Override
     public void resume() {
 
-        Assets.gamePaused = false;
+        //Assets.gamePaused = false;
 
     }
 
     @Override
     public void hide() {
 
-        dispose();
+        //dispose();
 
     }
 
     @Override
     public void dispose() {
 
-        Assets.dispose();
+        //Assets.dispose();
 
     }
 }

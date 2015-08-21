@@ -95,29 +95,5 @@ public class Player extends Actor {
 
 
     }
-
-    public static boolean interact(char direction){
-
-        switch (direction){
-
-            case 'N':
-                break;
-
-            case 'E':
-                break;
-
-            case 'S':
-                break;
-
-            case 'W':
-                break;
-
-            default:
-                break;
-
-        }
-
-        return false;
-    }
     
 }

@@ -1,13 +1,14 @@
 package com.kappaDelta.espRPG;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
-public class Camera {
+public class Cam extends Camera {
 
     static OrthographicCamera camera;
 
-    public Camera() {
+    public Cam() {
         camera = new OrthographicCamera();
 
         float w = Gdx.graphics.getWidth();
@@ -17,9 +18,13 @@ public class Camera {
         camera.update();
     }
 
-    public boolean update() {
+    public void update() {
         camera.update();
-        return true;
+    }
+
+    @Override
+    public void update(boolean updateFrustum) {
+
     }
 
     public OrthographicCamera getCamera() {

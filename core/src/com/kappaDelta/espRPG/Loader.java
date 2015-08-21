@@ -34,7 +34,6 @@ public class Loader implements Screen {
         loadCircle.addAction(Actions.sequence(Actions.rotateBy(-2780, 2.5f), Actions.run(new Runnable() {
             @Override
             public void run() {
-                //Assets.load();
                 ((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenu());
             }
         })));

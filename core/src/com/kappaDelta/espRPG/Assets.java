@@ -10,9 +10,9 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.scenes.scene2d.Action;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class Assets {
 
@@ -35,7 +35,7 @@ public class Assets {
     
     static Animation walkLeft,walkRight,walkUp,walkForward;
     
-    static TiledMap tiledMap;
+    static TiledMap worldMap, caveMap, currentMap;
     
     static MapProperties prop;
     
@@ -43,16 +43,23 @@ public class Assets {
     
     static int w = Gdx.graphics.getWidth();
     static int h = Gdx.graphics.getHeight();
-    static int mapWidth, mapHeight, tilePixelWidth, tilePixelHeight, mapPixelWidth, mapPixelHeight;
+    static int mapWidth, mapHeight, tilePixelWidth,
+            tilePixelHeight, mapPixelWidth, mapPixelHeight;
     static int optionIndex = 0;
+    static int arrowYIndex = 0;
+    static int arrowX = 570;
 
-    static Boolean gamePaused;
+    static Boolean gamePaused, textShowing;
 
     static Skin uiskin;
 
     static String menuOptions[] = {"Party","Inventory","Dictionary","Quests","Options","Quit"};
+    static int arrowY[] = {457, 382, 307, 232, 157, 82};
+    static Stage gameStage;
 
     public static boolean load() {
+
+        gameStage = new Stage(new ScreenViewport());
 
         batch = new SpriteBatch();
         
@@ -60,10 +67,13 @@ public class Assets {
 
         gamePaused = false;
 
+        textShowing = false;
+
         uiskin = new Skin(Gdx.files.internal("UISkin/uiskin.json"));
         
-        tiledMap = new TmxMapLoader().load("maps/demoMap.tmx");
-        prop = tiledMap.getProperties();
+        worldMap = new TmxMapLoader().load("maps/demoMap.tmx");
+        prop = worldMap.getProperties();
+        caveMap = new TmxMapLoader().load("maps/demoCave.tmx");
         
         mapWidth = prop.get("width", Integer.class);
         mapHeight = prop.get("height", Integer.class);
@@ -92,6 +102,7 @@ public class Assets {
         font = new BitmapFont();
         
         mainChar = mainCharForward;
+        currentMap = worldMap;
 
         return true;
     }
@@ -111,6 +122,7 @@ public class Assets {
         walkLeftSpriteSheet.dispose();
         walkUpSpriteSheet.dispose();
 
-        tiledMap.dispose();
+        worldMap.dispose();
+        caveMap.dispose();
     }
 }
