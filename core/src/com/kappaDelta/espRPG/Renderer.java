@@ -42,6 +42,17 @@ public class Renderer {
 
     public boolean render() {
 
+        Assets.elapsedTime += Gdx.graphics.getDeltaTime();
+
+        Gdx.gl.glClearColor(.5f, 0, .5f, 1);
+        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        c.update();
+
+        tiledMapRenderer.setView(c.getCamera());
+        tiledMapRenderer.render();
+
        if(Assets.gamePaused){
            kl.handleMainControls();
 
@@ -59,7 +70,9 @@ public class Renderer {
 
        else if(Assets.textShowing){
 
-           //Gdx.input.setInputProcessor(Assets.gameStage);
+           Assets.batch.begin();
+           Assets.batch.draw(Assets.mainChar, Player.xPos, Player.yPos);
+           Assets.batch.end();
 
            Assets.gameStage.act();
            Assets.gameStage.draw();
@@ -67,19 +80,6 @@ public class Renderer {
        }
 
        else{
-
-           Assets.elapsedTime += Gdx.graphics.getDeltaTime();
-
-           Gdx.gl.glClearColor(.5f, 0, .5f, 1);
-           Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-           Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-           c.update();
-
-           tiledMapRenderer.setView(c.getCamera());
-           tiledMapRenderer.render();
-
-
 
            if(!kl.handleMainControls()){
                Assets.batch.begin();

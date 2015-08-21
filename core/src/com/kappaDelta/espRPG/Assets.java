@@ -31,7 +31,6 @@ public class Assets {
     static Texture mainCharUp;
     static Texture mainChar;
     static Texture strigo;
-
     
     static Animation walkLeft,walkRight,walkUp,walkForward;
     

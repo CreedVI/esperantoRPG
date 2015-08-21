@@ -1,12 +1,8 @@
 package com.kappaDelta.espRPG;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
-import com.badlogic.gdx.utils.Align;
-
 public class npcInteraction {
 
-    static Dialog dialog;
+    static Textbox textbox;
 
     public static boolean interact(String name, String type) {
 
@@ -22,17 +18,8 @@ public class npcInteraction {
 
                 Assets.textShowing = true;
 
-                 dialog = new Dialog("Frank Sinatra:", Assets.uiskin, "dialog") {
-                    protected void result (Object object) {
+                 textbox = new Textbox(name + ": ", Assets.uiskin, "dialog", "Are you enjoying this demo, Adventurer?");
 
-                        Assets.textShowing = false;
-                        System.out.println("Chosen: " + object);
-
-                    }
-                }.text("Are you enjoying this demo, Adventurer?").button("Yes", true).button("No", false)
-                         .show(Assets.gameStage);
-
-                Gdx.input.setInputProcessor(Assets.gameStage);
 
                 return true;
 
@@ -40,6 +27,11 @@ public class npcInteraction {
 
             else if (name.equals("Sammy Davis Jr")) {
 
+                System.out.println("Create dialog");
+
+                Assets.textShowing = true;
+
+                textbox = new Textbox(name + ": ", Assets.uiskin, "dialog", "Are you enjoying this demo, Adventurer?");
 
                 return true;
 
@@ -47,6 +39,11 @@ public class npcInteraction {
 
             else if (name.equals("Dean Martin")) {
 
+                System.out.println("Create dialog");
+
+                Assets.textShowing = true;
+
+                textbox = new Textbox(name + ": ", Assets.uiskin, "dialog", "Are you enjoying this demo, Adventurer?");
 
                 return true;
 
