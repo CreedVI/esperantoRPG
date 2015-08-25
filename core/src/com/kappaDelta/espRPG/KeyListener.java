@@ -75,12 +75,6 @@ public class KeyListener implements InputProcessor {
 
         else if(Assets.textShowing){
 
-            if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
-
-                //npcInteraction.dialog.hide();
-
-            }
-
         }
 
         else if (Assets.gamePaused) {

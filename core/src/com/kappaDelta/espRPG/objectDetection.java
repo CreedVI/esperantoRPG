@@ -140,7 +140,6 @@ public class objectDetection {
         if(Assets.currentMap.getLayers().get("interactables") != null) {
             objects = Assets.currentMap.getLayers().get("interactables").getObjects();
 
-
             switch (direction) {
                 case 'N':
 
@@ -159,8 +158,9 @@ public class objectDetection {
                                     System.out.println(objName + ", " + obType + ", " + rect.x + ", " + rect.y);
 
                                     npcInteraction.interact(objName, obType);
+
+                                    return true;
                                 }
-                                return true;
                             }
 
                         }
@@ -183,6 +183,8 @@ public class objectDetection {
                                     obType = object.getProperties().get("Type").toString();
 
                                     System.out.println(objName + ", " + obType + ", " + rect.x + ", " + rect.y);;
+
+                                    npcInteraction.interact(objName, obType);
 
                                     return true;
                                 }
@@ -208,6 +210,8 @@ public class objectDetection {
 
                                 System.out.println(objName + ", " + obType + ", " + rect.x + ", " + rect.y);
 
+                                npcInteraction.interact(objName, obType);
+
                                 return true;
                             }
 
@@ -231,6 +235,8 @@ public class objectDetection {
                                     obType = object.getProperties().get("Type").toString();
 
                                     System.out.println(objName + ", " + obType + ", " + rect.x + ", " + rect.y);
+
+                                    npcInteraction.interact(objName, obType);
 
                                     return true;
                                 }

@@ -53,8 +53,14 @@ public class Assets {
     static Skin uiskin;
 
     static String menuOptions[] = {"Party","Inventory","Dictionary","Quests","Options","Quit"};
+
     static int arrowY[] = {457, 382, 307, 232, 157, 82};
+
     static Stage gameStage;
+
+    static String questList[][];
+    //pull quests from XML file and store them in this here array
+
 
     public static boolean load() {
 
