@@ -73,10 +73,6 @@ public class KeyListener implements InputProcessor {
             }
         }
 
-        else if(Assets.textShowing){
-
-        }
-
         else if (Assets.gamePaused) {
 
             if (Gdx.input.isKeyJustPressed(Input.Keys.W) || Gdx.input.isKeyJustPressed(Input.Keys.UP)) {

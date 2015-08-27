@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DialogueTree>
+
+    <Greeting Message="Hello, Adventurer! Are you enjoying this demo?">
+        <btn1 Text = "Yes" Return = "positive"/>
+        <btn2 Text = "No" Return = "negative"/>
+        <btn3 Text = "" Return = ""/>
+    </Greeting>
+
+    <NegativeReply Message = "You make me sad, so be it.">
+        <btn1 Text="Continue" Return="exit"/>
+        <btn2 Text = "" Return = ""/>
+        <btn3 Text = "" Return = ""/>
+    </NegativeReply>
+
+    <PositiveReply Message="I'm glad to hear that.">
+        <btn1 Text="Continue" Return="exit"/>
+        <btn2 Text = "" Return = ""/>
+        <btn3 Text = "" Return = ""/>
+    </PositiveReply>
+
+</DialogueTree>

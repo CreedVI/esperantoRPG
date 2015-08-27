@@ -1,21 +1,17 @@
 <?xml version="1.0" encodin="UTF-8"?>
-<DialogTree>
+<DialogueTree>
 
     <Greeting Message = "Hello, Adventurer!">
 
-        <Options>
+        <btn1 Text = "Hello!" Return = "Polite"/>
 
-            <btn1 Text = "Hello!" Return = "Polite"/>
+        <btn2 Text = "GAH! A TALKING TREE!" Return = "Impolite"/>
 
-            <btn2 Text = "GAH! A TALKING TREE!" Return = "Impolite"/>
-
-            <btn3 Text ="Goodbye" Return ="false" />
-
-        </Options>
+        <btn3 Text ="Goodbye" Return ="false" />\
 
     </Greeting>
 
 
 
 
-</DialogTree>
+</DialogueTree>

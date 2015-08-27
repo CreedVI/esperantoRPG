@@ -30,7 +30,7 @@ public class npcInteraction {
 
                 Assets.textShowing = true;
 
-                textbox = new Textbox(name + ": ", Assets.uiskin, "dialog", "Are you enjoying this demo, Adventurer?");
+                textbox = new Textbox(name + ": ", Assets.uiskin, name);
 
                 return true;
 
@@ -42,7 +42,7 @@ public class npcInteraction {
 
                 Assets.textShowing = true;
 
-                textbox = new Textbox(name + ": ", Assets.uiskin, "dialog", "Are you enjoying this demo, Adventurer?");
+                textbox = new Textbox(name + ": ", Assets.uiskin, "dialog", "Are you enjoying this demo, Adventurer?", (byte)0);
 
                 return true;
 
