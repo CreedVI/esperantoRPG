@@ -12,6 +12,10 @@ public class KeyListener implements InputProcessor {
 
     public boolean handleMainControls() {
         if (!Assets.gamePaused && !Assets.textShowing) {
+            
+            if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
+                Monster.setStats();
+            }
 
             if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)) {
 
@@ -20,6 +24,7 @@ public class KeyListener implements InputProcessor {
                 if (!objectDetection.collide('W')) {
                     Renderer.drawMainChar('a');
                     Cam.checkBounds('W');
+                    Random.calculateEncounter();
                     return true;
                 }
 
@@ -32,6 +37,7 @@ public class KeyListener implements InputProcessor {
                 if (!objectDetection.collide('E')) {
                     Renderer.drawMainChar('d');
                     Cam.checkBounds('E');
+                    Random.calculateEncounter();
                     return true;
                 }
 
@@ -44,6 +50,7 @@ public class KeyListener implements InputProcessor {
                 if (!objectDetection.collide('N')) {
                     Renderer.drawMainChar('w');
                     Cam.checkBounds('N');
+                    Random.calculateEncounter();
                     return true;
                 }
                 return false;
@@ -55,6 +62,7 @@ public class KeyListener implements InputProcessor {
                 if (!objectDetection.collide('S')) {
                     Renderer.drawMainChar('s');
                     Cam.checkBounds('S');
+                    Random.calculateEncounter();
                     return true;
                 }
                 return false;

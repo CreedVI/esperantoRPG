@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="32" tileheight="32" nextobjectid="11">
+ <tileset firstgid="1" name="cave2" tilewidth="32" tileheight="32">
+  <image source="tiles/cave2.png" width="512" height="672"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt1EsOAUEQgOFyAI/MAbgBl8AJmBPgBDgBTmBuZ++VwY5ZePydtOiV0SFaohZfZtNVf/dmUhHZWfscNTTRQhtVZ9aX2XfAGRfrmqOBDrqIUXdmfZl9UhApomSVnzhyfIMe+hhgi0we8z7MzgoW8rolVhhhjLXH7Cfc+1PMAvaNYaB+4twh1PsjTAL1TXtuv//aj36gnwTom3/gyZF9ua+UUkoppd53A2qNT/8=
+  </data>
+ </layer>
+ <objectgroup name="objects">
+  <object id="2" x="352" y="64" width="32" height="384"/>
+  <object id="3" x="352" y="416" width="160" height="32"/>
+  <object id="4" x="512" y="64" height="160"/>
+  <object id="5" x="480" y="64" width="32" height="384"/>
+  <object id="6" x="384" y="64" width="32"/>
+  <object id="7" x="384" y="0" width="32" height="64"/>
+  <object id="8" x="448" y="0" width="32" height="64"/>
+ </objectgroup>
+ <objectgroup name="transportZones" visible="0">
+  <properties>
+   <property name="Destination" value="overworld1"/>
+   <property name="Name" value="cave1"/>
+  </properties>
+  <object id="9" x="416" y="0" width="32" height="64"/>
+ </objectgroup>
+ <objectgroup name="interactables" visible="0">
+  <object id="10" x="384" y="384" width="96" height="32">
+   <properties>
+    <property name="Name" value="cave1WaterSpot"/>
+    <property name="Type" value="Enviornmental"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

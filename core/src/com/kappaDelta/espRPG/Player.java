@@ -10,6 +10,8 @@ public class Player extends Actor {
     boolean canMove = true, canMoveN = true, canMoveE = true, canMoveS = true, canMoveW = true;
     static boolean N = false, E = false, S = false, W = false;
 
+    static int level = 1;
+
     // In which direction is the player facing (N, E, S, W)?
     // S as default value so char sprite is facing the camera.
     static char facing = 'S';
@@ -94,6 +96,11 @@ public class Player extends Actor {
         }
 
 
+    }
+
+    public static int getLevel(){
+
+        return level;
     }
     
 }

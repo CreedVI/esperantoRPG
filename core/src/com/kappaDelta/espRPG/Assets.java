@@ -78,7 +78,7 @@ public class Assets {
         
         worldMap = new TmxMapLoader().load("maps/demoMap.tmx");
         prop = worldMap.getProperties();
-        caveMap = new TmxMapLoader().load("maps/demoCave.tmx");
+        caveMap = new TmxMapLoader().load("maps/demoCaveV2.tmx");
         
         mapWidth = prop.get("width", Integer.class);
         mapHeight = prop.get("height", Integer.class);

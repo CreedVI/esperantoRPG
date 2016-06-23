@@ -89,8 +89,11 @@ public class Renderer {
 
         String map = mapObject.getProperties().get("Destination").toString();
 
+        Gdx.app.log("destination",map);
+
         if(map == "cave1"){
 
+            System.out.println("Dickbutt");
             Assets.currentMap = Assets.caveMap;
             tiledMapRenderer = new OrthogonalTiledMapRenderer(Assets.currentMap);
 
@@ -205,7 +208,6 @@ public class Renderer {
     public static boolean drawMainChar(char keyPressed){
         switch (keyPressed) {
             case 'a':
-                System.out.println("a");
                 
                 Assets.batch.begin();
                 Assets.batch.draw(Assets.walkLeft.getKeyFrame(Assets.elapsedTime, true), Player.xPos, Player.yPos);
@@ -214,7 +216,6 @@ public class Renderer {
                 break;
 
             case 's':
-                System.out.println("s");
                 
                 Assets.batch.begin();
                 Assets.batch.draw(Assets.walkForward.getKeyFrame(Assets.elapsedTime, true), Player.xPos, Player.yPos);
@@ -223,7 +224,6 @@ public class Renderer {
                 break;
 
             case 'd':
-                System.out.println("d");
                 
                 Assets.batch.begin();
                 Assets.batch.draw(Assets.walkRight.getKeyFrame(Assets.elapsedTime, true),Player.xPos, Player.yPos);
@@ -232,7 +232,6 @@ public class Renderer {
                 break;
 
             case 'w':
-                System.out.println("w");
                 
                 Assets.batch.begin();
                 Assets.batch.draw(Assets.walkUp.getKeyFrame(Assets.elapsedTime, true), Player.xPos, Player.yPos);

@@ -6,6 +6,8 @@ import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.math.Rectangle;
 
+import javax.sql.rowset.CachedRowSet;
+
 public class objectDetection {
 
     public static boolean collide(char direction){
@@ -40,6 +42,10 @@ public class objectDetection {
                         if(rect.contains(Player.pcoBody.x,Player.pcoBody.y)){
                             MapObject mapObject = warp;
                             System.out.println("Change maps");
+                            Player.xPos = (int) ((RectangleMapObject) warp).getRectangle().getX();
+                            Player.yPos = (int) ((RectangleMapObject) warp).getRectangle().getY() - 1;
+                            Cam.camera.translate(((RectangleMapObject) warp).getRectangle().getX(),
+                                    ((RectangleMapObject) warp).getRectangle().getY());
                             Renderer.changeMap(mapObject);
                             return true;
                         }
